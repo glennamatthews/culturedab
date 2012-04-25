@@ -1,3 +1,32 @@
-<% provide(:title, 'Sign up') %>
+<%= provide(:title, 'Sign up') %>
+
+<% content_for :stylesheets do %>
+  #top_menu { display: none }
+<% end %>
+
+<div align="center">
+	<%= link_to image_tag("logo_highres.png", alt: "CultureDab", border: "0", width:"500px"), root_path %>
+</div><br />
 <h1>Sign up</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+  	  <%= render 'shared/error_messages' %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
